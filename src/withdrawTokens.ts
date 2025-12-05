@@ -1,8 +1,8 @@
-import { getWithdrawTokensCalls } from "@zerodev/global-address";
+import { getWithdrawTokensCalls } from "@zerodev/smart-routing-address";
 
 async function main() {
     const calls = await getWithdrawTokensCalls({
-        globalAddress: '0x80aD677493cA0b3A521E55aEEE3ad882be05E277', // global address
+        smartRoutingAddress: '0x086f37068C865116dA5D7576dd87E05D52AECfb1', // smart routing address
         tokens: [
             {
                 chainId: 42161,
@@ -20,9 +20,9 @@ async function main() {
     });
 
     for (const withdrawData of calls.data) {
-        console.log(`withdraw token from global address on chain ${withdrawData.chainId} with ${withdrawData.calls.length} calls`);
+        console.log(`withdraw token from smart routing address on chain ${withdrawData.chainId} with ${withdrawData.calls.length} calls`);
         console.log('calls', withdrawData.calls);
-        // send calls from owner of global address
+        // send calls from owner of smart routing address
     }
 }
 main();

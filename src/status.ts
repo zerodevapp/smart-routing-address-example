@@ -1,8 +1,8 @@
-import { getGlobalAddressStatus } from "@zerodev/global-address";
+import { getSmartRoutingAddressStatus } from "@zerodev/smart-routing-address";
 
 async function main() {
-    const status = await getGlobalAddressStatus({
-        globalAddress: '0x80aD677493cA0b3A521E55aEEE3ad882be05E277',
+    const status = await getSmartRoutingAddressStatus({
+        smartRoutingAddress: '0x086f37068C865116dA5D7576dd87E05D52AECfb1',
     });
     console.log(status);
 }
