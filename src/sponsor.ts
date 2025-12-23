@@ -10,6 +10,11 @@ import { config } from 'dotenv'
 
 config()
 
+// To enable fee sponsorship:
+// 1. Set ZERODEV_PROJECT_ID in your .env file.
+// 2. Select which tokens to sponsor in the dashboard (https://dashboard.zerodev.app/projects/smart-routing-address).
+//
+// For guide on configuring sponsored tokens: https://docs.zerodev.app/smart-routing-address
 const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID
 
 async function run() {
