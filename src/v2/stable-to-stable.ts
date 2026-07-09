@@ -1,65 +1,38 @@
 import {
   createSmartRoutingAddress,
-  createCall,
-  FLEX,
   SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0,
-  SMART_ROUTING_ADDRESS_V0_2_1
+  TOKEN_ADDRESSES,
 } from '@zerodev/smart-routing-address'
-import { erc20Abi } from 'viem'
-import { base, arbitrum, mainnet, optimism } from 'viem/chains'
+import { arbitrum, base, robinhood } from 'viem/chains'
 
 async function run() {
   // Replace this with an address you want to receive funds on
   const owner = '0xddED85de258cC7a33A61BC6215DD766E87a97070'
 
-  const destChain = base
+  const destChain = robinhood
   const slippage = 5000
-
-  const erc20Call = createCall({
-    target: FLEX.TOKEN_ADDRESS,
-    value: 0n,
-    abi: erc20Abi,
-    functionName: 'transfer',
-    args: [owner, FLEX.AMOUNT],
-  })
-
-  const nativeCall = createCall({
-    target: owner,
-    value: FLEX.NATIVE_AMOUNT,
-  })
 
   const { smartRoutingAddress, estimatedFees } = await createSmartRoutingAddress({
     destChain,
     owner,
     slippage,
+    recipient: owner,
     actions: {
       'USDC': {
-        action: [erc20Call],
+        asset: TOKEN_ADDRESSES[destChain.id].USDG
       },
-      'WRAPPED_NATIVE': {
-        action: [erc20Call],
-      },
-      'NATIVE': {
-        action: [nativeCall],
-      }
     },
-    // Source tokens (any ERC20 on arbitrum, ETH on mainnet, USDC on optimism)
     srcTokens: [
       {
-        tokenType: 'ERC20',
+        tokenType: 'USDC',
         chain: arbitrum,
       },
       {
-        tokenType: 'NATIVE',
-        chain: mainnet
-      },
-      {
         tokenType: 'USDC',
-        chain: optimism
+        chain: base
       },
     ],
     version: SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0,
-    allowPartialRoutes: true, // not throw error even if some routes fail
   })
 
   console.log('Estimated fee per token deposit', JSON.stringify(estimatedFees, null, 2));

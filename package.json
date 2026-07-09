@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@zerodev/smart-routing-address": "^0.2.5",
+    "@zerodev/smart-routing-address": "1.0.0-alpha.2",
     "dotenv": "^16.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
-    "viem": "^2.52.2"
+    "viem": "^2.55.0"
   }
 }

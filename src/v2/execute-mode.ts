@@ -2,21 +2,10 @@ import {
   createSmartRoutingAddress,
   createCall,
   FLEX,
-  SMART_ROUTING_ADDRESS_SERVER_URL,
-  SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0
+  SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0,
 } from '@zerodev/smart-routing-address'
 import { erc20Abi } from 'viem'
 import { base, arbitrum, mainnet, optimism } from 'viem/chains'
-import { config } from 'dotenv'
-
-config()
-
-// To enable fee sponsorship:
-// 1. Set ZERODEV_PROJECT_ID in your .env file.
-// 2. Select which tokens to sponsor in the dashboard (https://dashboard.zerodev.app/projects/smart-routing-address).
-//
-// For guide on configuring sponsored tokens: https://docs.zerodev.app/smart-routing-address
-const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID
 
 async function run() {
   // Replace this with an address you want to receive funds on
@@ -68,11 +57,7 @@ async function run() {
         chain: optimism
       },
     ],
-    config: {
-      baseUrl: `${SMART_ROUTING_ADDRESS_SERVER_URL}/${ZERODEV_PROJECT_ID}`
-    },
     version: SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0,
-    allowPartialRoutes: true, // not throw error even if some routes fail
   })
 
   console.log('Estimated fee per token deposit', JSON.stringify(estimatedFees, null, 2));
