@@ -2,10 +2,17 @@ import {
   createSmartRoutingAddress,
   createCall,
   FLEX,
-  SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0,
+  SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_0,
 } from '@zerodev/smart-routing-address'
 import { erc20Abi } from 'viem'
 import { base, arbitrum, mainnet, optimism } from 'viem/chains'
+import { config } from "dotenv";
+config();
+
+const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID;
+if (!ZERODEV_PROJECT_ID) {
+  throw new Error("ZERODEV_PROJECT_ID is required")
+}
 
 async function run() {
   // Replace this with an address you want to receive funds on
@@ -57,7 +64,8 @@ async function run() {
         chain: optimism
       },
     ],
-    version: SMART_ROUTING_ADDRESS_V2_0_0_ALPHA_0,
+    version: SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_0,
+    projectId: ZERODEV_PROJECT_ID!,
   })
 
   console.log('Estimated fee per token deposit', JSON.stringify(estimatedFees, null, 2));
