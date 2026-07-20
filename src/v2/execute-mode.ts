@@ -45,19 +45,12 @@ async function run() {
       'WRAPPED_NATIVE': {
         action: [erc20Call],
       },
-      'NATIVE': {
-        action: [nativeCall],
-      }
     },
     // Source tokens (any ERC20 on arbitrum, ETH on mainnet, USDC on optimism)
     srcTokens: [
       {
         tokenType: 'ERC20',
         chain: arbitrum,
-      },
-      {
-        tokenType: 'NATIVE',
-        chain: mainnet
       },
       {
         tokenType: 'USDC',
