@@ -1,6 +1,6 @@
 import {
   createSmartRoutingAddress,
-  SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_0,
+  SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_1,
 } from '@zerodev/smart-routing-address'
 import { base, arbitrum, mainnet, optimism } from 'viem/chains'
 import { config } from "dotenv";
@@ -39,7 +39,7 @@ async function run() {
         chain: optimism
       },
     ],
-    version: SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_0,
+    version: SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_1,
     projectId: ZERODEV_PROJECT_ID!
   })
 
