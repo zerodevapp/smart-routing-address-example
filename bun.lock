@@ -5,7 +5,7 @@
     "": {
       "name": "smart-routing-address-example",
       "dependencies": {
-        "@zerodev/smart-routing-address": "^1.0.0-alpha.5",
+        "@zerodev/smart-routing-address": "^1.0.0-alpha.6",
         "dotenv": "^16.5.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.6.3",
@@ -46,7 +46,7 @@
 
     "@types/node": ["@types/node@24.10.1", "", { "dependencies": { "undici-types": "~7.16.0" } }, "sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ=="],
 
-    "@zerodev/smart-routing-address": ["@zerodev/smart-routing-address@1.0.0-alpha.5", "", { "dependencies": { "semver": "^7.8.5" }, "peerDependencies": { "typescript": "^5.0.0", "viem": "^2.55.0" } }, "sha512-VzzIF+poXrFP627yVAuqR70yah9sOZioHaRPcAmh2mMo3MNYpt/u7vBkkYwG+zy0dvk/i/56CnWbERLeCRlt5A=="],
+    "@zerodev/smart-routing-address": ["@zerodev/smart-routing-address@1.0.0-alpha.6", "", { "dependencies": { "semver": "^7.8.5" }, "peerDependencies": { "typescript": "^5.0.0", "viem": "^2.55.0" } }, "sha512-ncRzCFp/rFq/Ol8B5twuBXlPa5QZBwMn6k3d8hoxGPAhibvYOucoJ0IAWyIJ7DVrV1zinvl9/4ApTHppheD0cA=="],
 
     "abitype": ["abitype@1.2.3", "", { "peerDependencies": { "typescript": ">=5.0.4", "zod": "^3.22.0 || ^4.0.0" }, "optionalPeers": ["typescript", "zod"] }, "sha512-Ofer5QUnuUdTFsBRwARMoWKOH1ND5ehwYhJ3OJ/BQO+StkwQjHw0XyVh4vDttzHB7QOFhPHa/o413PJ82gU/Tg=="],
 
