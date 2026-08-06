@@ -31,10 +31,6 @@ async function run() {
         chain: arbitrum,
       },
       {
-        tokenType: 'NATIVE',
-        chain: mainnet
-      },
-      {
         tokenType: 'USDC',
         chain: optimism
       },
