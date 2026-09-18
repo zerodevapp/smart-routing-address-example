@@ -8,21 +8,26 @@ Smart Routing Address is a cross-chain token bridging solution that allows users
 # Install dependencies
 bun install  # or `npm install`
 
-# Run vanilla example (user pays fees)
-npx ts-node src/index.ts
+# Create a smart routing address (direct mode)
+npx ts-node src/create-sra-direct-mode.ts
 
-# Run sponsored example (developer pays fees)
-npx ts-node src/sponsor.ts
+# Create a smart routing address (execute mode)
+npx ts-node src/create-sra-execute-mode.ts
 ```
 
 ## Examples
 
-This project contains:
+Core: creating a smart routing address, in one of two modes.
 
-- **`src/index.ts`** - Vanilla smart routing address where users pay bridging fees
-- **`src/sponsor.ts`** - Developer-sponsored fees (requires `ZERODEV_PROJECT_ID` in `.env`)
+- **`src/create-sra-direct-mode.ts`** - Direct mode: deposited tokens are bridged and delivered as the configured asset to the recipient
+- **`src/create-sra-execute-mode.ts`** - Execute mode: deposited tokens are bridged and then arbitrary calls run on the destination chain
 
-## Environment Setup (For Sponsored Fees)
+Helpers:
+
+- **`src/status.ts`** - Query the status of an existing smart routing address
+- **`src/withdrawTokens.ts`** - Build the calls needed to withdraw stuck tokens from a smart routing address
+
+## Environment Setup
 
 Create a `.env` file:
 ```env

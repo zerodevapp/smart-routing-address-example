@@ -2,20 +2,17 @@ import {
   createSmartRoutingAddress,
   createCall,
   FLEX,
-  SMART_ROUTING_ADDRESS_SERVER_URL
+  SMART_ROUTING_ADDRESS_V1_0_0,
 } from '@zerodev/smart-routing-address'
 import { erc20Abi } from 'viem'
-import { base, arbitrum, mainnet, optimism } from 'viem/chains'
-import { config } from 'dotenv'
+import { base, arbitrum, optimism } from 'viem/chains'
+import { config } from "dotenv";
+config();
 
-config()
-
-// To enable fee sponsorship:
-// 1. Set ZERODEV_PROJECT_ID in your .env file.
-// 2. Select which tokens to sponsor in the dashboard (https://dashboard.zerodev.app/projects/smart-routing-address).
-//
-// For guide on configuring sponsored tokens: https://docs.zerodev.app/smart-routing-address
-const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID
+const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID;
+if (!ZERODEV_PROJECT_ID) {
+  throw new Error("ZERODEV_PROJECT_ID is required")
+}
 
 async function run() {
   // Replace this with an address you want to receive funds on
@@ -44,15 +41,12 @@ async function run() {
     actions: {
       'USDC': {
         action: [erc20Call],
-        fallBack: [erc20Call],
       },
       'WRAPPED_NATIVE': {
         action: [erc20Call],
-        fallBack: [erc20Call],
       },
       'NATIVE': {
-        action: [nativeCall],
-        fallBack: [nativeCall],
+        action: [nativeCall]
       }
     },
     // Source tokens (any ERC20 on arbitrum, ETH on mainnet, USDC on optimism)
@@ -62,17 +56,16 @@ async function run() {
         chain: arbitrum,
       },
       {
-        tokenType: 'NATIVE',
-        chain: mainnet
-      },
-      {
         tokenType: 'USDC',
         chain: optimism
       },
+      {
+        tokenType: 'NATIVE',
+        chain: base
+      }
     ],
-    config: {
-      baseUrl: `${SMART_ROUTING_ADDRESS_SERVER_URL}/${ZERODEV_PROJECT_ID}`
-    }
+    version: SMART_ROUTING_ADDRESS_V1_0_0,
+    projectId: ZERODEV_PROJECT_ID!,
   })
 
   console.log('Estimated fee per token deposit', JSON.stringify(estimatedFees, null, 2));
