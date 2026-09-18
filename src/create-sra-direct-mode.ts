@@ -15,7 +15,7 @@ if (!ZERODEV_PROJECT_ID) {
 async function run() {
 
   // Replace this with an address you want to receive funds on
-  const owner = '0xddED85de258cC7a33A61BC6215DD766E87a97070'
+  const owner = '0x999f8012B114600D2B2995e14ED975322c30391E'
 
   const destChain = robinhood
   const slippage = 5000
