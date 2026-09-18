@@ -47,7 +47,7 @@ async function run() {
 
   console.log('Estimated fee per token deposit', JSON.stringify(estimatedFees, null, 2));
   console.log('Smart routing address', smartRoutingAddress)
-  console.log('Try sending at least 1 USDC to the smart routing address on any chain (say Arbitrum), and observe that the owner address receives funds on Base.')
+  console.log('Try sending at least 1 USDC to the smart routing address on any chain (say Arbitrum), and observe that the owner address receives funds on Robinhood.')
 }
 
 run().catch((error) => console.error('Error:', error))
