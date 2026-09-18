@@ -2,10 +2,10 @@ import {
   createSmartRoutingAddress,
   createCall,
   FLEX,
-  SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_1,
+  SMART_ROUTING_ADDRESS_V1_0_0,
 } from '@zerodev/smart-routing-address'
 import { erc20Abi } from 'viem'
-import { base, arbitrum, mainnet, optimism } from 'viem/chains'
+import { base, arbitrum, optimism } from 'viem/chains'
 import { config } from "dotenv";
 config();
 
@@ -45,6 +45,9 @@ async function run() {
       'WRAPPED_NATIVE': {
         action: [erc20Call],
       },
+      'NATIVE': {
+        action: [nativeCall]
+      }
     },
     // Source tokens (any ERC20 on arbitrum, ETH on mainnet, USDC on optimism)
     srcTokens: [
@@ -56,8 +59,12 @@ async function run() {
         tokenType: 'USDC',
         chain: optimism
       },
+      {
+        tokenType: 'NATIVE',
+        chain: base
+      }
     ],
-    version: SMART_ROUTING_ADDRESS_V1_0_0_ALPHA_1,
+    version: SMART_ROUTING_ADDRESS_V1_0_0,
     projectId: ZERODEV_PROJECT_ID!,
   })
 
